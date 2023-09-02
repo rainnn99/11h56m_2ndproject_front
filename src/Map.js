@@ -1,82 +1,60 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from 'react'
 
-const Map = ({ selectedPhoto }) => {
-  const [mapLoaded, setMapLoaded] = useState(false);
+const { kakao } = window
 
+const Map = ({ searchPlace }) => {
   useEffect(() => {
-    const script = document.createElement("script");
-    script.async = true;
-    script.src = "//dapi.kakao.com/v2/maps/sdk.js?appkey=e07b7eceebfbc8695cb6df262d314685&libraries=services";
-    document.head.appendChild(script);
+    var infowindow = new kakao.maps.InfoWindow({ zIndex: 1 })
+    const container = document.getElementById('myMap')
+    const options = {
+      center: new kakao.maps.LatLng(37.5559044, 126.929982),
+      level: 4,
+    }
+    const map = new kakao.maps.Map(container, options)
 
-    script.onload = () => {
-      const { kakao } = window;
+    const ps = new kakao.maps.services.Places()
 
-      // 지도가 로드되었을 때
-      setMapLoaded(true);
+    ps.keywordSearch(searchPlace, placesSearchCB)
 
-      kakao.maps.load(() => {
-        const container = document.getElementById("map");
-        const options = {
-          center: new kakao.maps.LatLng(37.5598878, 126.977072),
-          level: 4
-        };
-        const map = new kakao.maps.Map(container, options);
+    function placesSearchCB(data, status, pagination) {
+      if (status === kakao.maps.services.Status.OK) {
+        let bounds = new kakao.maps.LatLngBounds()
 
-        // 갈치조림
-        const markerPositions1 = [
-          new kakao.maps.LatLng(37.5598878, 126.977072), // 희락갈치
-          new kakao.maps.LatLng(37.5597797, 126.977060) // 중앙갈치식당
-        ];
-        const markers1 = markerPositions1.map(position => (
-          new kakao.maps.Marker({ position })
-        ));
-        markers1.forEach(marker => marker.setMap(map));
+        for (let i = 0; i < data.length; i++) {
+          displayMarker(data[i])
+          bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x))
+        }
 
-        // 감자탕 
-        const markerPositions2 = [
-          new kakao.maps.LatLng(37.5597166, 126.976925), // 동화식당
-          new kakao.maps.LatLng(37.5591763, 126.978521), // 윤영밥상
-          new kakao.maps.LatLng(37.5607622, 126.979426), // 생생통영마을
-          new kakao.maps.LatLng(37.5589872, 126.979177), // 김명숙아지매순대국
-          new kakao.maps.LatLng(37.5577081, 126.980886) // 두원식당
-        ];
-        const markers2 = markerPositions2.map(position => (
-          new kakao.maps.Marker({ position })
-        ));
-        markers2.forEach(marker => marker.setMap(map));
+        map.setBounds(bounds)
+      }
+    }
 
-        // 수제비 
-        const markerPositions3 = [
-          new kakao.maps.LatLng(37.5597616, 126.976619), // 숭례분식
-          new kakao.maps.LatLng(37.5623650, 126.974468) // 종로수제비
-        ];
-        const markers3 = markerPositions3.map(position => (
-          new kakao.maps.Marker({ position })
-        ));
-        markers3.forEach(marker => marker.setMap(map));
+    function displayMarker(place) {
+      let marker = new kakao.maps.Marker({
+        map: map,
+        position: new kakao.maps.LatLng(place.y, place.x),
+      })
 
-        // 선택된 사진에 해당하는 식당만 표시
-        const allMarkers = [...markers1, ...markers2, ...markers3];
-        const selectedMarkers = selectedPhoto
-          ? allMarkers.filter(marker =>
-              (markerPositions1.includes(marker.getPosition()) && selectedPhoto === "갈치 조림") ||
-              (markerPositions2.includes(marker.getPosition()) && selectedPhoto === "감자탕") ||
-              (markerPositions3.includes(marker.getPosition()) && selectedPhoto === "수제비")
-          )
-          : allMarkers;
-
-        // 선택한 식당 포인터들을 지도에 표시
-        selectedMarkers.forEach(marker => marker.setMap(map));
-      });
-    };
-  }, [selectedPhoto]);
+      // 마커에 클릭이벤트를 등록합니다
+      kakao.maps.event.addListener(marker, 'click', function () {
+        // 마커를 클릭하면 장소명이 인포윈도우에 표출됩니다
+        infowindow.setContent('<div style="padding:5px;font-size:12px;">' + place.place_name + '</div>')
+        infowindow.open(map, marker)
+      })
+    }
+  }, [searchPlace])
 
   return (
-    <div>
-      <div id="map" style={{ width: "760px", height: "720px", marginTop: 100, marginLeft: 100}}></div>
-    </div>
-  );
-};
+     <div
+        id="myMap"
+        style={{
+          width: '700px',
+          height: '700px',
+          marginLeft: '100px',
+          marginTop: '100px'
+        }}>
+     </div>
+  )
+}
 
 export default Map;

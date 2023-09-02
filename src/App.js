@@ -37,6 +37,7 @@ import MyModal from "./routes/MyModal";
 import Survey from "./routes/Survey";
 import RecommendFood from "./routes/RecommendFood";
 import Map from "./Map"
+import LandingPage from "./routes/LandingPage"
 
 function App() {
   let navigate = useNavigate();
@@ -151,7 +152,7 @@ function App() {
             <Route path="/recommendfood" element={<RecommendFood />} />
             <Route path="/map" element={<Map />} />
 
-
+            <Route path="landingpage" element={<LandingPage />} />
 
 
           </Routes>  
