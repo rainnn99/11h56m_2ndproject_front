@@ -75,35 +75,30 @@ function LandingPage() {
 
 
   return (
-    <div>
-      <MyNav />
+    <div className="landingPage">
+      
 
       <div>
         <Map searchPlace={place} currentLocation={currentLocation} />
       </div>
+ 
+      <div className="foodSearchBtn">
+  <form className="inputForm" onSubmit={handleSubmit}>
+    <input
+      placeholder="예: 홍대 파스타"
+      onChange={onChange}
+      value={inputText}
+      style={{ height: '35px', width: '150px' }}
+    />
+    <button type="submit" style={{ height: '35px', width: '50px' }}>
+      검색
+    </button>
+    <button style={{ height: '35px', width: '120px' }}onClick={handleGetCurrentLocation} disabled={false}>
+      현재 위치
+    </button>
+  </form>
+</div>
 
-      <div>
-        <form className="inputForm" onSubmit={handleSubmit}>
-          <input
-            placeholder="예: 홍대 파스타"
-            onChange={onChange}
-            value={inputText}
-            style={{ height: '35px', width: '150px' }}
-          />
-          <button type="submit" style={{ height: '35px', width: '50px' }}>
-            검색
-          </button>
-        </form>
-      </div>
-
-      <div>
-      <button onClick={handleGetCurrentLocation} disabled={false}>
-  현재 위치
-</button>
-
-
-
-      </div>
     </div>
   );
 }

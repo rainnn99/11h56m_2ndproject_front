@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { BiSearchAlt2 } from "react-icons/bi";
 import MyNav from "../../MyNav";
 import Map from "../../Map";
+import LandingPage from "../LandingPage";
 
 function KoreanFood() {
   const photos = [
@@ -53,7 +54,8 @@ function KoreanFood() {
       <Container style={{ marginBottom: '30px' }}> 
         <Row>
           <Col md={8}>
-            <Map />
+            {/* <Map /> */}
+            <LandingPage/>
           </Col>
           <Col md={4} style={{ backgroundColor: "#f9f9f9", maxHeight: "800px", marginTop: "100px" }}>
             <div className="FoodImg" style={{ overflowY: "scroll", maxHeight: "700px" }}>
