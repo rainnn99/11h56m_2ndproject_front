@@ -1,0 +1,28 @@
+@import url("https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap");
+
+.RouletteBtn {
+margin-top: 20px;
+  width: 120px;
+  height: 50px;
+  /* background-color: #009900; */
+  background-color: #ffff;
+  font-family: "Do Hyeon", sans-serif;
+  font-weight: 700;
+  font-size: 30px;
+  color: #f37500;
+  border-radius: 10px;
+  border: none;
+}
+
+
+.rouletteIcon {
+    margin-top: 180px;
+    margin-left: 130px;
+    color: white;
+  }
+
+
+/* .rouletteD {
+    border-radius: 50%; 원 모양으로 만듭니다.
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+} */

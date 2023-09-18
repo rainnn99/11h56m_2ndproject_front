@@ -11,6 +11,7 @@ import { RiKakaoTalkFill } from "react-icons/ri";
 import { AiOutlineMessage } from "react-icons/ai";
 import { AiOutlineClose } from "react-icons/ai";
 
+
 function Main4() {
 
     let navigate = useNavigate();
@@ -73,6 +74,7 @@ function Main4() {
                       <button className='btn1' onClick={() => {
                           navigate("/postlist");
                       }}>이거먹자 커뮤니티 →</button>
+
                   </div>
 
                   <div className='m4icon'>

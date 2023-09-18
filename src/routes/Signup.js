@@ -9,10 +9,12 @@ function SignUp() {
   let navigate = useNavigate();
 
   const [formData, setFormData] = useState({
-    id: "",
+    memberId: "",
     password: "",
     name: "",
-    phone_number: "",
+    phone: "",
+    coupon: "0",
+    roles: "ROLE_USER"
   });
 
   const handleChange = (e) => {
@@ -30,6 +32,7 @@ function SignUp() {
       .post("/signup", formData)
       .then((response) => {
         //서버 응답내용을 response매개변수에 담아 콘솔에 출력
+        console.log(formData);
         console.log(response.data);
         navigate("/login"); //성공하면 로그인페이지로
       })
@@ -104,7 +107,7 @@ function SignUp() {
               className="inputTag"
               type="text"
               maxLength="10"
-              name="id"
+              name="memberId"
               placeholder="아이디를 입력해주세요"
               onChange={handleChange}
             />
@@ -155,7 +158,7 @@ function SignUp() {
               className="inputTag"
               type="text"
               maxLength="20"
-              name="phone_number"
+              name="phone"
               placeholder="숫자만 입력해주세요"
               onChange={handleChange}
             />
@@ -249,7 +252,7 @@ function SignUp() {
                   type="submit"
                   value="가입하기"
                   className="signupButton"
-                  // onClick={handleSubmit}
+                  //onClick={handleSubmit}
                 >
                   가입하기
                 </button>

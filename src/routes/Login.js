@@ -29,10 +29,16 @@ function Login() {
     }
 
     axios
-      .post("/login", { id: inputId, password: inputPw })
+      .post("/authenticate", { id: inputId, password: inputPw }, {
+        headers: {
+          'Access-Control-Allow-Origin': 'http://localhost:3000',
+        }
+      })
       .then((response) => {
+        console.log("Request Data:", { id: inputId, password: inputPw });
         //api 연결 성공시
         const data = response.data;
+        console.log(inputId)
         if (data.success) {
           navigate("/"); //홈화면으로
         } else {
@@ -42,10 +48,13 @@ function Login() {
       })
       .catch((error) => { //연결 실패
         console.error("Error:", error);
+        console.log("Request Data:", { id: inputId, password: inputPw });
+        console.log(inputId)
         alert("로그인 요청에 실패했습니다. 나중에 다시 시도해주세요.");
       });
-  };
+    }
 
+    
   return (
     <div>
       <div

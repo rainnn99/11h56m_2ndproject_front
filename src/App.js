@@ -18,6 +18,7 @@ import Main1 from "./routes/Main1"
 import Main2 from "./routes/Main2"
 import Main3 from "./routes/Main3"
 import Main4 from "./routes/Main4"
+import Main5 from "./routes/Main5"
 import { TbMessageCircle } from "react-icons/tb";
 import { AiOutlineMessage } from "react-icons/ai";
 import { AiOutlineClose } from "react-icons/ai";
@@ -37,7 +38,8 @@ import MyModal from "./routes/MyModal";
 import Survey from "./routes/Survey";
 import RecommendFood from "./routes/RecommendFood";
 import Map from "./Map"
-import LandingPage from "./routes/LandingPage"
+import LandingPage from "./routes/LandingPage";
+import Roulette from "./Roulette";
 
 function App() {
   let navigate = useNavigate();
@@ -46,7 +48,7 @@ function App() {
     const toggleSurveyForm = () => setIsOpen(!isOpen); //isOpen값을 반전시켜 설문조사창을 열고 닫는 함수
     const [windowHeight, setWindowHeight] = useState(0);
     const [currentSection, setCurrentSection] = useState(0);
-    const sectionCount = 4;
+    const sectionCount = 5;
     
     useEffect(() => {
       // 브라우저 창의 높이를 구해서 state에 저장
@@ -118,6 +120,9 @@ function App() {
                 <section id="section4" style={sectionStyle} onClick={() => handleSectionClick(3)}>
                   <Main4 />
                 </section>
+                <section id="section5" style={sectionStyle} onClick={() => handleSectionClick(4)}>
+                  <Main5 />
+                </section>
               </div>
               
               </>
@@ -136,6 +141,7 @@ function App() {
             <Route path="/main2" element={<Main2 />} />
             <Route path="/main3" element={<Main3 />} />
             <Route path="/main4" element={<Main4 />} />
+            <Route path="/main5" element={<Main5 />} />
             <Route path="/postlist" element={<PostList />} />
             <Route path="/postmodal" element={<PostModal />} />
             
@@ -153,6 +159,8 @@ function App() {
             <Route path="/map" element={<Map />} />
 
             <Route path="landingpage" element={<LandingPage />} />
+            <Route path="roulette" element={<Roulette />} />
+
 
 
           </Routes>  
