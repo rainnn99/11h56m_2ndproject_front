@@ -2,7 +2,7 @@ import { Container, Row, Col, Figure } from "react-bootstrap";
 import React, { useState } from 'react';
 import { BiSearchAlt2 } from "react-icons/bi";
 import MyNav from "../../MyNav";
-import Map from "../../Map";
+import LandingPage from "../LandingPage";
 
 function Snack() {
  const photos = [ 
@@ -42,7 +42,7 @@ function Snack() {
       <Container style={{ marginBottom: '50px' }}> 
         <Row>
           <Col md={8}>
-            <Map />
+            <LandingPage />
           </Col>
           <Col md={4} style={{ backgroundColor: "#f9f9f9", maxHeight: "800px", marginTop: "100px" }}>
             <div className="FoodImg" style={{ overflowY: "scroll", maxHeight: "700px" }}>

@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import MyNav from '../MyNav';
 import Map from '../Map';
+import { MdPlace } from "react-icons/md";
 
 function LandingPage() {
   const [inputText, setInputText] = useState('');
@@ -77,27 +78,29 @@ function LandingPage() {
   return (
     <div className="landingPage">
       
+      <div className="foodSearchBtn">
+      <form className="inputForm" onSubmit={handleSubmit}>
+  <input
+    placeholder="예: 홍대 파스타"
+    onChange={onChange}
+    value={inputText}
+    style={{ height: '35px', width: '230px', marginRight: '10px' }}
+  />
+  <button type="submit" style={{ height: '35px', width: '50px', marginRight: '20px' }}>
+    검색
+  </button>
+  <button style={{ height: '35px', width: '120px', marginLeft: '270px',borderRadius: '10px' }} onClick={handleGetCurrentLocation} disabled={false}>
+    현재 위치<MdPlace/>
+  </button>
+</form>
 
-      <div>
+
+</div>
+      <div style={{marginTop: '10px'}}>
         <Map searchPlace={place} currentLocation={currentLocation} />
       </div>
  
-      <div className="foodSearchBtn">
-  <form className="inputForm" onSubmit={handleSubmit}>
-    <input
-      placeholder="예: 홍대 파스타"
-      onChange={onChange}
-      value={inputText}
-      style={{ height: '35px', width: '150px' }}
-    />
-    <button type="submit" style={{ height: '35px', width: '50px' }}>
-      검색
-    </button>
-    <button style={{ height: '35px', width: '120px' }}onClick={handleGetCurrentLocation} disabled={false}>
-      현재 위치
-    </button>
-  </form>
-</div>
+      
 
     </div>
   );

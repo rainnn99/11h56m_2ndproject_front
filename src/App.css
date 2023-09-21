@@ -445,7 +445,7 @@ input[name="signup_num"] {
 .categoryTitle {
   /* color: #f37500; */
   font-family: "Black Han Sans", sans-serif;
-  font-size: 55px;
+  font-size: 3.5rem;
   margin-top: 60px;
   margin-bottom: 70px;
 }
@@ -454,8 +454,8 @@ input[name="signup_num"] {
   flex-direction: column;
   margin: 0 auto;
   justify-content: center;
-  width: 800px;
-  height: 450px;
+  width: 40.3vw;
+  height: 45.5vh;
   background-color: rgb(241, 241, 241);
   border-radius: 50px;
 }
@@ -472,13 +472,13 @@ input[name="signup_num"] {
   margin-left: 75px;
 }
 .categoryItems {
-  width: 200px;
+  width: 10.2vw; 
   height: 180px;
   /* background-color: white; */
   /* margin-left: 50px;
   margin-bottom: 40px; */
   justify-content: center;
-  margin-right: 20px;
+  margin-right: 1vw;
   /* box-shadow:3px 3px 3px 3px #999; */
   filter: drop-shadow(10px 6px 6px #c3c3c3);
 }
@@ -1047,8 +1047,8 @@ input[name="signup_num"] {
   display: flex;
   flex-direction: column; /* 원래 스타일로 초기화 */
   align-items: initial; /* 원래 스타일로 초기화 */
+  margin-top: 100px;
   
-  margin: 10px;
 }
 
 .landingPage {
