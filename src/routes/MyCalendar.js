@@ -49,7 +49,7 @@ function MyCalendar() {
             </p>
             {dayData && (
               <p style={{ marginBottom: "0px", textAlign: "left" }}>
-                Kcal: {dayData.breakfast + dayData.lunch + dayData.dinner}
+                Kcal: {dayData[0].cal}
               </p>
             )}
            
@@ -105,6 +105,7 @@ function MyCalendar() {
           아침: item.breakfast,
           점심: item.lunch,
           저녁: item.dinner,
+          cal: item.cal
         };
 
         // 날짜를 키로 하여 데이터를 저장
