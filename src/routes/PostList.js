@@ -58,7 +58,7 @@ function PostList() {
           <span className="post-title" onClick={() => handlePostClick(post)}>
             {post.title}
           </span>
-          <span className="post-author">{`작성자: ${post.userId}`}</span>
+          <span className="post-author">{`작성자: ${post.memberId}`}</span>
         
       </div>
     );
@@ -70,7 +70,7 @@ function PostList() {
         <div className="post-details">
           <h2>{selectedPost.title}</h2>
           <p>{selectedPost.body}</p>
-          <p>{selectedPost.userId}</p>
+          <p>{selectedPost.memberId}</p>
         </div>
       );
     }

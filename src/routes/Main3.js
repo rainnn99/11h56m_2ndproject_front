@@ -55,8 +55,8 @@ function Main3() {
       .then((response) => {
         const data = response.data;
         console.log(data)
-        if (data.id !== null) {
-          setLoggedInUser(data.id);
+        if (data !== null) {
+          setLoggedInUser(data);
         }
       })
       .catch((error) => {
