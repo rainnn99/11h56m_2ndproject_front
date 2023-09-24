@@ -73,9 +73,7 @@ function Main5() {
                           도저히 뭐 먹을지 못 고르겠다! <br />
                         룰렛으로 오늘 메뉴 정해요.
                       </div>
-                      <button className='btn1' onClick={() => {
-                          navigate("/roulette");
-                      }}>우측 룰렛 돌리기 →</button>
+                      <button className='btn1'>우측 룰렛 돌리기 →</button>
 
                   </div>
 
