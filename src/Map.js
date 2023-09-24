@@ -50,8 +50,8 @@ const Map = ({ searchPlace }) => {
         style={{
           width: '700px',
           height: '700px',
-          marginLeft: '100px',
-          marginTop: '100px'
+          // marginLeft: '100px',
+          // marginTop: '100px'
         }}>
      </div>
   )
