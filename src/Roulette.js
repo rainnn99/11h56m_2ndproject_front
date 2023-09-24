@@ -34,11 +34,11 @@ export default () => {
     {
       category: "한식",
       foods: [
-        "김치찌개",
+        "감자탕",
         "낙곱새",
         "불고기",
         "갈비탕",
-        "떡볶이",
+        "콩나물불고기",
         "족발",
         "샤브샤브",
         "곱창전골"
@@ -49,10 +49,10 @@ export default () => {
       foods: [
         "초밥",
         "라멘",
-        "돈부리",
-        "우동",
+        "밀푀유나베",
+        "마제소바",
         "타코야끼",
-        "사케",
+        "텐동",
         "오꼬노미야끼",
         "돈까스",
       ],
@@ -81,6 +81,32 @@ export default () => {
         "리조또",
         "감바스",
         "타코",
+      ],
+    },
+    {
+      category: "아시안",
+      foods: [
+        "팟타이",
+        "쌀국수",
+        "분짜",
+        "푸팟퐁커리",
+        "반미",
+        "월남쌈",
+        "나시고랭",
+        "짜조",
+      ],
+    },
+    {
+      category: "분식",
+      foods: [
+        "떡볶이",
+        "닭발",
+        "타코야끼",
+        "치킨",
+        "김밥",
+        "만두",
+        "로제 떡볶이",
+        "덮밥",
       ],
     },
   ];
@@ -138,19 +164,22 @@ export default () => {
           backgroundColors={[
             "rgb(245, 115, 115)",
             "rgb(255, 255, 255)",
-            "rgb(84, 181, 219)",
+            "rgb(120, 214, 208)",
             "rgb(250, 196, 95)",
             "rgb(86, 209, 49)",
-            "rgb(120, 120, 126)",
-            "rgb(233, 159, 23)",
-            "rgb(198, 120, 214)",
+            // "rgb(255, 167, 156)",
+            "rgb(159, 156, 255)",
+            "rgb(255, 167, 156)",
+            "rgb(231, 124, 252)",
+
           ]}
           // onStopSpinning={() => {
           //   setMustSpin(false);
           // }}
           onStopSpinning={onStopSpinning}
-          innerBorderColor="grey"
-          outerBorderColor="#d6d4d2"
+          innerBorderColor="lightgrey"
+          // outerBorderColor="#d6d4d2"
+          outerBorderColor="lightgrey"
           radiusLineColor="lightgrey"
           outerBorderWidth="10"
           radiusLineWidth="2"
@@ -185,6 +214,18 @@ export default () => {
           onClick={() => handleCategoryClick("양식")}
         >
           양식
+        </button>
+        <button
+          className="RouletteBtn2"
+          onClick={() => handleCategoryClick("아시안")}
+        >
+          아시안
+        </button>
+        <button
+          className="RouletteBtn2"
+          onClick={() => handleCategoryClick("분식")}
+        >
+          분식
         </button>
       </div>
     </>

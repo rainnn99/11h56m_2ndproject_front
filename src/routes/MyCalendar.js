@@ -33,35 +33,25 @@ function MyCalendar() {
       setSelectedDate(value);
       setVisible(true);
     };
-    const getMealName = (time) => {
-      switch (time) {
-        case 1:
-          return '아침';
-        case 2:
-          return '점심';
-        case 3:
-          return '저녁';
-        default:
-          return '';
-      }
-    };
     
     return (
       <div>
-        {dayData ? (
+        {dayData && dayData.length > 0 ? (
           <div>
             <p style={{ marginBottom: "0px", textAlign: "left" }}>
-            {getMealName(1)}: {dayData.find(item => item.시간 === 1)?.음식이름}
-          </p>
-          <p style={{ marginBottom: "0px", textAlign: "left" }}>
-            {getMealName(2)}: {dayData.find(item => item.시간 === 2)?.음식이름}
-          </p>
-          <p style={{ marginBottom: "0px", textAlign: "left" }}>
-            {getMealName(3)}: {dayData.find(item => item.시간 === 3)?.음식이름}
-          </p>
-          <p style={{ marginBottom: "0px", textAlign: "left" }}>
-            Kcal: {dayData.reduce((sum, item) => sum + item.칼로리, 0)}
-          </p>
+              아침: {dayData[0].아침 || ''}
+            </p>
+            <p style={{ marginBottom: "0px", textAlign: "left" }}>
+              점심: {dayData[0].점심 || ''}
+            </p>
+            <p style={{ marginBottom: "0px", textAlign: "left" }}>
+              저녁: {dayData[0].저녁 || ''}
+            </p>
+            {dayData && (
+              <p style={{ marginBottom: "0px", textAlign: "left" }}>
+                Kcal: {dayData.breakfast + dayData.lunch + dayData.dinner}
+              </p>
+            )}
            
             <Button type="default" onClick={handleEdit} style={{ marginTop: 10, textAlign: "right" }}>수정</Button>
           </div>
@@ -82,10 +72,10 @@ function MyCalendar() {
       음식이름3: newData.dinner,
     };
   
-    axios.post('/calendar', requestBody)
+    axios.post('/calendar/update', requestBody)
       .then(response => {
         const return_code = response.data;
-        if (return_code.success) {
+        if (return_code=="success") {
           fetchData(year, month);
         } else {
           alert("사용자의 데이터를 입력하는데 실패했습니다");
@@ -93,6 +83,7 @@ function MyCalendar() {
       })
       .catch(error => {
         console.error("Error:", error);
+        console.log(return_code);
         alert("사용자의 데이터를 입력하는데에 실패했습니다. 나중에 다시 시도해주세요.");
       });
 
@@ -109,12 +100,16 @@ function MyCalendar() {
         const transformedData = {};
 
         receivedData.forEach((item) => {
-          const { 날짜, ...rest } = item;
-          if (!transformedData[날짜]) {
-            transformedData[날짜] = [];
-          }
-          transformedData[날짜].push(rest);
-        });
+        const dateString = item.date; // 날짜 문자열
+        const dayData = {
+          아침: item.breakfast,
+          점심: item.lunch,
+          저녁: item.dinner,
+        };
+
+        // 날짜를 키로 하여 데이터를 저장
+        transformedData[dateString] = [dayData];
+      });
 
       // 기존 데이터에 새로운 데이터를 병합하여 업데이트
         setData((prevData) => ({
@@ -188,10 +183,6 @@ function MyCalendar() {
     />
   </div>
 </div>
-
-
-
-
 
     </div>
     {selectedDate && (
