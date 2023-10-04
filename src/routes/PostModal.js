@@ -30,7 +30,7 @@ function PostModal(props) {
     };
 
     axios
-      .post("/community/{userid}/new-writing", postData)
+      .post("/community/writing", postData)
       .then((response) => {
         console.log(response.data);
         setTitle("");

@@ -50,14 +50,14 @@ function KoreanFood() {
     <div>
       <MyNav />
       
-      <div className="FoodName"style={{ marginBottom: '-50px'}} >한식</div>
+      <div className="FoodName"style={{ marginBottom: '20px'}} >한식</div>
       <Container style={{ marginBottom: '30px' }}> 
         <Row>
           <Col md={8}>
             {/* <Map /> */}
             <LandingPage/>
           </Col>
-          <Col md={4} style={{ backgroundColor: "#f9f9f9", maxHeight: "800px", marginTop: "100px" }}>
+          <Col md={4} style={{ backgroundColor: "#f9f9f9", maxHeight: "800px"}}>
             <div className="FoodImg" style={{ overflowY: "scroll", maxHeight: "700px" }}>
               <div>
                 <form onSubmit={handleSubmit} style={{ marginBottom: '20px' }}>

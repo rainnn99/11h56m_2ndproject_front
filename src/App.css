@@ -1047,7 +1047,7 @@ input[name="signup_num"] {
   display: flex;
   flex-direction: column; /* 원래 스타일로 초기화 */
   align-items: initial; /* 원래 스타일로 초기화 */
-  margin-top: 100px;
+  margin-top: 20px;
   
 }
 
